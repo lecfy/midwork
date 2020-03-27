@@ -9,12 +9,19 @@ if(!isset($_SESSION)) session_start();
 $env = [];
 if (file_exists(APP_PATH . '../.env')) {
     $env = parse_ini_file(APP_PATH . '../.env');
+
+    // if file .env exists, developer mode = on
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
 }
 
 function config($key) {
     global $env;
     global $config;
     global $route;
+
+    if ($env) $config['dev'] = true;
 
     $config['route'] = $route;
 
@@ -23,16 +30,6 @@ function config($key) {
     }
 
     return isset($config[$key]) ? $config[$key] : false;
-}
-
-/*
- * Developer Mode
- */
-
-if (config('dev')) {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
 }
 
 /*
