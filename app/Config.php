@@ -1,16 +1,16 @@
 <?php
 /*
+ * IMPORTANT! Full website url with trailing slash, e.g. https://midreg.com/
+ */
+$config['host'] = '';
+
+/*
  * Database
  */
 $config['db_host'] = 'localhost'; ;
 $config['db_name'] = ''; // database
 $config['db_user'] = ''; // username connected to database
 $config['db_password'] = ''; // user password
-
-/*
- * IMPORTANT! Full website url with trailing slash, e.g. https://midreg.com/k
- */
-$config['host'] = '';
 
 /*
  * Language
