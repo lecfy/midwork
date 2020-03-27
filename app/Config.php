@@ -8,12 +8,15 @@ $config['db_user'] = ''; // username connected to database
 $config['db_password'] = ''; // user password
 
 /*
+ * IMPORTANT! Full website url with trailing slash, e.g. https://midreg.com/k
+ */
+$config['host'] = '';
+
+/*
  * Language
  */
 $config['lang'] = '';
 $config['languages'] = [];
-
-$config['host'] = '';
 
 $config['title'] = '';
 
