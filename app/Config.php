@@ -1,5 +1,11 @@
 <?php
 /*
+ * IMPORTANT! Update your path to the system folder
+ */
+define('SYSTEM_PATH', __DIR__ . '/../system/');
+define('APP_PATH', __DIR__ . '/');
+
+/*
  * IMPORTANT! Full website url with trailing slash, e.g. https://midreg.com/
  */
 $config['host'] = '';
@@ -28,7 +34,3 @@ $config['title'] = '';
  */
 
 $route['default'] = 'home/index';
-
-
-define('APP_PATH', __DIR__ . '/');
-define('SYSTEM_PATH', __DIR__ . '/../system/');
