@@ -1,10 +1,14 @@
 <?php
 
-/*if (!function_exists('view')) {
+if (!function_exists('view')) {
     function view($name, $data = []) {
-        return require_once APP_PATH . '/../Views/' . $name . '.php';
+        foreach ($data as $key => $value) {
+            $$key = $value;
+        }
+        $return = require_once APP_PATH . 'Views/' . $name . '.php';
+        return $return;
     }
-}*/
+}
 
 function value($input, $default = false) {
     if (isset($_SESSION['post'][$input])) {
