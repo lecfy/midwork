@@ -1,6 +1,8 @@
 {
-    "require": {
-        "php": "^7.2",
-      "ext-pdo": "*"
-    }
+  "name": "midmyk/midwork",
+  "description": "Simple PHP Framework",
+  "require": {
+    "php": "^7.2",
+    "ext-pdo": "*"
+  }
 }
