@@ -4,6 +4,7 @@
  */
 define('SYSTEM_PATH', __DIR__ . '/../system/');
 define('APP_PATH', __DIR__ . '/');
+define('STORAGE_PATH', __DIR__ . '/../storage/');
 
 /*
  * IMPORTANT! Full website url with trailing slash, e.g. https://midreg.com/
