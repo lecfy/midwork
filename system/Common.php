@@ -44,8 +44,30 @@ function match_lang($string) {
     return $string;
 }
 
+function exception($e, ... $errors)
+{
+    echo '<p style="font-weight: bold; color: red;">' . $e->getMessage() . '</p>';
+
+    foreach ($errors as $error) {
+        if ($error == 'post') {
+            echo '<p style="font-weight: bold; color: black;">$_POST: ';
+            print_r($_POST);
+            echo '</p>';
+        } else {
+            echo '<p style="font-weight: bold; color: rgb(230,33,67);">' . $error . '</p>';
+        }
+    }
+
+    $_SESSION['no_redirect'] = true;
+}
+
 function redirect($url = false) {
     global $config;
+
+    if (isset($_SESSION['no_redirect'])) {
+        unset($_SESSION['no_redirect']);
+        return false;
+    }
 
     header('location: ' . config('host') . $url);
     exit;

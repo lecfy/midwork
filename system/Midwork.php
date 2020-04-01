@@ -44,7 +44,7 @@ class Midwork
         return $this->conn->lastInsertId();
     }
 
-    public function ins($table, $data)
+    protected function ins($table, $data)
     {
         $columns = implode(',', array_keys($data));
 
@@ -53,8 +53,14 @@ class Midwork
             $questions .= ',?';
         }
 
-        $q = $this->prepare("INSERT INTO $table ($columns) VALUES ($questions)");
-        $q->execute(array_values($data));
+        try {
+            $sql = "INSERT INTO $table ($columns) VALUES ($questions)";
+            $prepare = $this->prepare($sql);
+            $prepare->execute(array_values($data));
+        } catch(PDOException $e) {
+            exception($e, $sql, 'post');
+        }
+
         return $this->last_id();
     }
 
