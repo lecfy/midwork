@@ -96,11 +96,24 @@ if (in_array($uri, array_keys(config('route')))) {
 
 $explode = explode('/', $uri);
 
+/*
+ * Class/Object
+ */
 $class_name = !empty($explode[0]) ? ucfirst($explode[0]) : 'home';
-$class = new $class_name;
+$object = new $class_name;
 unset($explode[0]);
 
+/*
+ * Method
+ */
 $method = !empty($explode[1]) ? $explode[1] : 'index';
+if (!method_exists($object, $method)) {
+    redirect();
+}
 unset($explode[1]);
 
-call_user_func_array([$class, $method], array_values($explode));
+
+/*
+ * Loading
+ */
+call_user_func_array([$object, $method], array_values($explode));
